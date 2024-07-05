@@ -1,8 +1,6 @@
 package com.vitor.moreira.simple_springboot_api.service;
 
-import com.vitor.moreira.simple_springboot_api.model.CreateUser;
 import com.vitor.moreira.simple_springboot_api.model.User;
-import com.vitor.moreira.simple_springboot_api.repository.TaskRepository;
 import com.vitor.moreira.simple_springboot_api.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
 
     public User findById(Integer id){
         Optional<User> user = this.userRepository.findById(id);
@@ -29,9 +25,7 @@ public class UserService {
     @Transactional
     public User create(User obj){
         obj.setId(null);
-
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
