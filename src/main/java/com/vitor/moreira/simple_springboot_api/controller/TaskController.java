@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/task")
@@ -26,6 +27,9 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
 
+
+    @PostMapping
+    @Validated
     public ResponseEntity<Task> create(@Valid @RequestBody Task task){
         this.taskService.create(task);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

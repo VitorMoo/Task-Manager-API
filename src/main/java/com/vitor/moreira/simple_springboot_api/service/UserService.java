@@ -31,7 +31,6 @@ public class UserService {
 
     @Transactional
     public User update(User obj){
-        obj.setId(null);
 
         User newObj = findById(obj.getId());
         newObj.setPassword(obj.getPassword());
