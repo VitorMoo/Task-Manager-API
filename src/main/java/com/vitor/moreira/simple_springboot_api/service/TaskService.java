@@ -37,10 +37,10 @@ public class TaskService {
     }
 
     @Transactional
-    public Task update(Task obj) {
+    public void update(Task obj) {
         Task newObj = findById(obj.getId());
         newObj.setDescription(obj.getDescription());
-        return this.taskRepository.save(newObj);
+        this.taskRepository.save(newObj);
     }
 
     public void delete(Integer id) {
@@ -51,4 +51,9 @@ public class TaskService {
             throw new RuntimeException("Não é possível excluir pois há entidades relacionadas!");
         }
     }
+
+    public List<Task> findAll(Integer userId) {
+        return this.taskRepository.findAll();
+    }
+
 }

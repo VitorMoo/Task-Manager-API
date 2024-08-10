@@ -27,7 +27,6 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
 
-
     @PostMapping
     @Validated
     public ResponseEntity<Task> create(@Valid @RequestBody Task task){
@@ -49,6 +48,12 @@ public class TaskController {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         this.taskService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("find-all/{id}")
+    public ResponseEntity<List<Task>> findAllById(@PathVariable Integer id){
+        List<Task> task = this.taskService.findAll(id);
+        return ResponseEntity.ok(task);
     }
 
 }
