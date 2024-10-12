@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-/* Container */
+
 .container {
   max-width: 400px;
   margin: 80px auto;
@@ -131,7 +131,7 @@ form button:hover {
 
 .tasks-container {
   width: 80%;
-  margin: 20px auto;
+  margin:auto;
 }
 
 .table-container {
@@ -161,11 +161,12 @@ table tr:nth-child(even) {
 }
 
 .actions-column {
-  width: 10%;
+  width: 20%;
   text-align: center;
+  gap: 10px;
 }
 .edit-input {
-  width: 100%;
+  width: 99%;
   padding: 8px;
   border: 1px solid #333333;
   background-color: #2a2a2a;
