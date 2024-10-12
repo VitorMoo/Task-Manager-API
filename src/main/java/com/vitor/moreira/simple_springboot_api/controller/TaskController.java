@@ -50,10 +50,10 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("find-all/{id}")
-    public ResponseEntity<List<Task>> findAllById(@PathVariable Integer id){
-        List<Task> task = this.taskService.findAll(id);
-        return ResponseEntity.ok(task);
+    @GetMapping("/user")
+    public ResponseEntity<List<Task>> findAllById(){
+        List<Task> objs = this.taskService.findByUser_Id();
+        return ResponseEntity.ok().body(objs);
     }
 
 }

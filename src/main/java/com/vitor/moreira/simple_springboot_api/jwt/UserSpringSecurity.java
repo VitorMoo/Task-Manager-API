@@ -7,27 +7,24 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
-public class UserSpringSecurity extends User {
+public class UserSpringSecurity implements UserDetails {
     private Integer id;
     private String username;
     private String password;
-    private Collection<GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
 
     public UserSpringSecurity(Integer id, String username, String password, Set<ProfileEnum> profileEnums) {
-        super(username, password, true, true, true, true, profileEnums.stream()
-                .map(x -> new SimpleGrantedAuthority(x.getDescription()))
-                .collect(Collectors.toList()));
         this.id = id;
         this.username = username;
         this.password = password;
-        this.authorities = profileEnums.stream()
-                .map(x -> new SimpleGrantedAuthority(x.getDescription()))
+        this.authorities = profileEnums.stream().map(x -> new SimpleGrantedAuthority(x.getDescription()))
                 .collect(Collectors.toList());
     }
 
