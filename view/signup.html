@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts/signup.js"></script>
+  </head>
+
+  <body>
+<div id="okToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div>
+    <strong>Success</strong>
+    <button type="button" aria-label="Close" onclick="closeToast('#okToast')">x</button>
+  </div>
+  <div class="toast-message">Successfully registered. You can now log in.</div>
+</div>
+
+<div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div>
+    <strong>Error</strong>
+    <button type="button" aria-label="Close" onclick="closeToast('#errorToast')">x</button>
+  </div>
+  <div class="toast-message">Please enter both username and password.</div>
+</div>
+
+    <div class="container">
+      <form>
+        <h2>Task Manager - SignUp</h2>
+        <p>Please enter your username and password to create your account!</p>
+        <label>Username</label>
+        <input type="text" required="true" id="username" />
+        <label for="password">Password</label>
+        <input type="password" placeholder="*******" required="true" id="password" />
+        <button type="button" id="requestBtn" onclick="signup()">Signup</button>
+      </form>
+      <div class="link">
+        <p>
+          Already have an account?
+          <a href="login.html">Login</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function closeToast(toastId) {
+        document.getElementById(toastId).classList.remove('show');
+      }
+    </script>
+  </body>
+</html>
